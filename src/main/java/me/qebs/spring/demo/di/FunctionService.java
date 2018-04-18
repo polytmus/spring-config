@@ -1,4 +1,4 @@
-package me.qebs.spring.demo;
+package me.qebs.spring.demo.di;
 
 import org.springframework.stereotype.Service;
 

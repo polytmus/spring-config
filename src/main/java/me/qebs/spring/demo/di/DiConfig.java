@@ -1,4 +1,4 @@
-package me.qebs.spring.demo;
+package me.qebs.spring.demo.di;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
