@@ -1,9 +1,12 @@
-package me.qebs.spring.demo.aware;
+package me.qebs.spring.demo.conditional;
 
 /**
- * @author xuyao@zbj.com
  * @create 2018-04-19 14:26
  */
 
-public class WindowsListService {
+public class WindowsListService implements ListService {
+    @Override
+    public String showListCmd() {
+        return "dir";
+    }
 }
