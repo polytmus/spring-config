@@ -1,19 +1,17 @@
 <%--
   Created by IntelliJ IDEA.
   User: xuyao
-  Date: 2018/4/23
-  Time: 21:53
+  Date: 2018/4/26
+  Time: 22:50
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
-<script src="/demo/assets/js/jquery.js"></script>
 <head>
-    <title>Welcome to SpringMVC</title>
+    <title>ERROR</title>
 </head>
 <body>
-    <pre>
-        Welcome to SpringMVC world.
-    </pre>
+    ${errorMessage}
 </body>
 </html>
