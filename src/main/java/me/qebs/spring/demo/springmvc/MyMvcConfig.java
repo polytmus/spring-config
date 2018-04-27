@@ -4,15 +4,17 @@ import me.qebs.spring.demo.springmvc.interceptor.DemoInterceptor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.web.multipart.MultipartResolver;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.*;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
-import javax.servlet.annotation.MultipartConfig;
+import java.util.List;
 
+@EnableScheduling
 @Configuration
 @EnableWebMvc
 @ComponentScan("me.qebs.spring.demo.springmvc")
@@ -52,11 +54,22 @@ public class MyMvcConfig extends WebMvcConfigurerAdapter {
         registry.addInterceptor(demoInterceptor());
     }
 
+    @Override
+    public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
+        converters.add(converter());
+    }
+
+    @Bean
+    public MyMessageConverter converter() {
+        return new MyMessageConverter();
+    }
+
     //添加视图跳转,不必要总是写三行代码跳转，实际实现更加简洁
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/index").setViewName("/index");
         registry.addViewController("/toUpload").setViewName("/upload");
+        registry.addViewController("/converter").setViewName("/converter");
     }
 
     //不可忽略值特殊符号的传参如xx.yy
